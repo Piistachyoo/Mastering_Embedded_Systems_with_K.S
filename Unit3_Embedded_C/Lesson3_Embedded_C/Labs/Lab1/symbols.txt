@@ -1,0 +1,21 @@
+$ arm-none-eabi-nm app.o
+00000000 T main
+00000000 D string_buffer
+         U Uart_Send_String
+
+$ arm-none-eabi-nm uart.o
+00000000 T Uart_Send_String
+
+$ arm-none-eabi-nm startup.o
+         U main
+00000000 T reset_section
+         U stack_top
+00000008 t stop
+
+$ arm-none-eabi-nm omar.elf
+00010010 T main
+00010000 T reset_section
+000110f0 D stack_top
+00010008 t stop
+0001008c D string_buffer
+00010034 T Uart_Send_String
