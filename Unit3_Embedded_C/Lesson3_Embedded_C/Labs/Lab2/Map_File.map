@@ -9,45 +9,110 @@ sram             0x20000000         0x00005000         xrw
 Linker script and memory map
 
 
-.text           0x08000000      0x11b
+.text           0x08000000      0x24f
  *(.vectors*)
- .vectors       0x08000000       0x1c startup.o
+ .vectors       0x08000000      0x150 startup.o
                 0x08000000                vectors
  *(.text*)
- .text          0x0800001c       0x6c main.o
-                0x0800001c                main
- .text          0x08000088       0x90 startup.o
-                0x08000088                Reset_Handler
-                0x0800010c                H_Fault_Handler
-                0x0800010c                MM_Fault_Handler
-                0x0800010c                Bus_Fault_Handler
-                0x0800010c                Default_Handler
-                0x0800010c                Usage_Fault_Handler
-                0x0800010c                NMI_Handler
+ .text          0x08000150       0x6c main.o
+                0x08000150                main
+ .text          0x080001bc       0x90 startup.o
+                0x080001bc                Reset_Handler
+                0x08000240                SysTick_Handler
+                0x08000240                USART3_Handler
+                0x08000240                PendSV_Handler
+                0x08000240                NMI_Handler
+                0x08000240                DMA2_Channel5_Handler
+                0x08000240                DMA_CH5_Handler
+                0x08000240                CAN1_RX1_Handler
+                0x08000240                EXTI15_10_Handler
+                0x08000240                DMA_CH2_Handler
+                0x08000240                DMA2_Channel1_Handler
+                0x08000240                I2C1_EV_Handler
+                0x08000240                Bus_Fault_Handler
+                0x08000240                ADC1_2_Handler
+                0x08000240                EXTI4_Handler
+                0x08000240                DMA2_Channel4_Handler
+                0x08000240                H_Fault_Handler
+                0x08000240                OTG_FS_Handler
+                0x08000240                I2C1_ER_Handler
+                0x08000240                RTC_Handler
+                0x08000240                CAN1_RX0_Handler
+                0x08000240                TIM1_CC_Handler
+                0x08000240                I2C2_ER_Handler
+                0x08000240                DMA_CH7_Handler
+                0x08000240                CAN1_SCE_Handler
+                0x08000240                DMA_CH6_Handler
+                0x08000240                TIM1_BRK_Handler
+                0x08000240                MM_Fault_Handler
+                0x08000240                EXTI1_Handler
+                0x08000240                SVCall_Handler
+                0x08000240                EXTI3_Handler
+                0x08000240                Tamper_Handler
+                0x08000240                EXTI2_Handler
+                0x08000240                UART4_Handler
+                0x08000240                CAN2_RX1_Handler
+                0x08000240                EXTI9_5_Handler
+                0x08000240                TIM2_Handler
+                0x08000240                USART1_Handler
+                0x08000240                CAN2_SCE_Handler
+                0x08000240                TIM3_Handler
+                0x08000240                Default_Handler
+                0x08000240                TIM4_Handler
+                0x08000240                DMA_CH1_Handler
+                0x08000240                CAN2_TX_Handler
+                0x08000240                SPI2_Handler
+                0x08000240                EXTI0_Handler
+                0x08000240                CAN2_RX0_Handler
+                0x08000240                Usage_Fault_Handler
+                0x08000240                TIM1_UP_Handler
+                0x08000240                USART2_Handler
+                0x08000240                ETH_Handler
+                0x08000240                ETH_WKUP
+                0x08000240                SPI1_Handler
+                0x08000240                I2C2_EV_Handler
+                0x08000240                Flash_Handler
+                0x08000240                SPI3_Handler
+                0x08000240                DMA2_Channel3_Handler
+                0x08000240                RCC_Handler
+                0x08000240                PVD_Handler
+                0x08000240                UART5_Handler
+                0x08000240                DMA2_Channel2_Handler
+                0x08000240                TIM5_Handler
+                0x08000240                TIM7_Handler
+                0x08000240                Window_WD_Handler
+                0x08000240                CAN1_TX_Handler
+                0x08000240                DMA_CH3_Handler
+                0x08000240                TIM6_Handler
+                0x08000240                RTCAlarm_Handler
+                0x08000240                Debug_Mon_Handler
+                0x08000240                TIM1_TRG_COM_Handler
+                0x08000240                OTG_FS_WKUP_Handler
+                0x08000240                DMA_CH4_Handler
  *(.rodata)
- .rodata        0x08000118        0x3 main.o
-                0x08000118                const_variables
-                0x0800011b                _E_text = .
+ .rodata        0x0800024c        0x3 main.o
+                0x0800024c                const_variables
+                0x0800024f                _E_text = .
 
-.glue_7         0x0800011c        0x0
- .glue_7        0x0800011c        0x0 linker stubs
+.glue_7         0x08000250        0x0
+ .glue_7        0x08000250        0x0 linker stubs
 
-.glue_7t        0x0800011c        0x0
- .glue_7t       0x0800011c        0x0 linker stubs
+.glue_7t        0x08000250        0x0
+ .glue_7t       0x08000250        0x0 linker stubs
 
-.vfp11_veneer   0x0800011c        0x0
- .vfp11_veneer  0x0800011c        0x0 linker stubs
+.vfp11_veneer   0x08000250        0x0
+ .vfp11_veneer  0x08000250        0x0 linker stubs
 
-.v4_bx          0x0800011c        0x0
- .v4_bx         0x0800011c        0x0 linker stubs
+.v4_bx          0x08000250        0x0
+ .v4_bx         0x08000250        0x0 linker stubs
 
-.iplt           0x0800011c        0x0
- .iplt          0x0800011c        0x0 main.o
+.iplt           0x08000250        0x0
+ .iplt          0x08000250        0x0 main.o
 
-.rel.dyn        0x0800011c        0x0
- .rel.iplt      0x0800011c        0x0 main.o
+.rel.dyn        0x08000250        0x0
+ .rel.iplt      0x08000250        0x0 main.o
 
-.data           0x20000000        0x8 load address 0x0800011b
+.data           0x20000000        0x8 load address 0x0800024f
                 0x20000000                _S_DATA = .
  *(.data)
  .data          0x20000000        0x7 main.o
@@ -58,10 +123,10 @@ Linker script and memory map
  *fill*         0x20000007        0x1 
                 0x20000008                _E_DATA = .
 
-.igot.plt       0x20000008        0x0 load address 0x08000123
+.igot.plt       0x20000008        0x0 load address 0x08000257
  .igot.plt      0x20000008        0x0 main.o
 
-.bss            0x20000008     0x1004 load address 0x08000123
+.bss            0x20000008     0x1004 load address 0x08000257
                 0x20000008                _S_BSS = .
  *(.bss)
  .bss           0x20000008        0x3 main.o
@@ -96,9 +161,9 @@ LOAD linker stubs
  .debug_aranges
                 0x00000020       0x20 startup.o
 
-.debug_line     0x00000000      0x152
+.debug_line     0x00000000      0x153
  .debug_line    0x00000000       0x8c main.o
- .debug_line    0x0000008c       0xc6 startup.o
+ .debug_line    0x0000008c       0xc7 startup.o
 
 .debug_str      0x00000000      0x264
  .debug_str     0x00000000      0x1dd main.o
