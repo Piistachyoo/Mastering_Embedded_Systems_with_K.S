@@ -1,0 +1,51 @@
+#/*************************************************************************/#
+#/* Author        : Omar Yamany                                    		  */#
+#/* File          : MakeFile				                              */#
+#/* Date          : May 26, 2023                                          */#
+#/* GitHub        : https://github.com/Piistachyoo             		      */#
+#/*************************************************************************/#
+
+#Set Compiler
+CC = arm-none-eabi-
+#Set Compiler Flags
+CFLAGS = -mcpu=cortex-m4 -gdwarf-2 -g
+#Set Includes
+INCS = -I .
+#Set Libraries
+LIBS =  
+#Set .c Wildcard
+SRC = $(wildcard *.c)
+#Set .c OBJ
+OBJ = $(SRC:.c=.o)
+#Set .s Wildcard
+As = $(wildcard *.s)
+#Set .s OBJ
+AsOBJ = $(As:.s=.o)
+#Set Project Name
+Project_Name = unit3_lab4_cortexM4
+
+all: $(Project_Name).bin
+	@echo "======Build Is Done======"
+
+
+%.o: %.c
+	$(CC)gcc -c $(CFLAGS) $(INCS) $< -o $@
+
+$(Project_Name).elf: $(OBJ) $(AsOBJ)
+	$(CC)ld.exe -T linker_script.ld $(OBJ) $(AsOBJ) -o $@ -Map=Map_File.map
+	cp $(Project_Name).elf $(Project_Name).axf
+
+$(Project_Name).bin: $(Project_Name).elf
+	$(CC)objcopy.exe -O binary $< $@
+
+clean_all:
+	rm *.o *.elf *.bin
+	@echo "======Everything Cleaned======"
+
+clean: 
+	rm *.elf *.bin
+	@echo "======Cleaned Executable Files======"
+
+clean_obj:
+	rm *.o
+	@echo "======Cleaned Object Files======"

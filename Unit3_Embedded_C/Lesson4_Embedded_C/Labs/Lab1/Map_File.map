@@ -1,0 +1,177 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x00000000         0x20000000         xr
+sram             0x20000000         0x20000000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x00000000      0x26c
+ *(.vectors*)
+ .vectors       0x00000000      0x150 startup.o
+                0x00000000                g_p_fn_vectors
+ *(.text*)
+ .text          0x00000150       0x8c main.o
+                0x00000150                main
+ .text          0x000001dc       0x90 startup.o
+                0x000001dc                Reset_Handler
+                0x00000260                SysTick_Handler
+                0x00000260                USART3_Handler
+                0x00000260                PendSV_Handler
+                0x00000260                NMI_Handler
+                0x00000260                DMA2_Channel5_Handler
+                0x00000260                DMA_CH5_Handler
+                0x00000260                CAN1_RX1_Handler
+                0x00000260                EXTI15_10_Handler
+                0x00000260                DMA_CH2_Handler
+                0x00000260                DMA2_Channel1_Handler
+                0x00000260                I2C1_EV_Handler
+                0x00000260                Bus_Fault_Handler
+                0x00000260                ADC1_2_Handler
+                0x00000260                EXTI4_Handler
+                0x00000260                DMA2_Channel4_Handler
+                0x00000260                H_Fault_Handler
+                0x00000260                OTG_FS_Handler
+                0x00000260                I2C1_ER_Handler
+                0x00000260                RTC_Handler
+                0x00000260                CAN1_RX0_Handler
+                0x00000260                TIM1_CC_Handler
+                0x00000260                I2C2_ER_Handler
+                0x00000260                DMA_CH7_Handler
+                0x00000260                CAN1_SCE_Handler
+                0x00000260                DMA_CH6_Handler
+                0x00000260                TIM1_BRK_Handler
+                0x00000260                MM_Fault_Handler
+                0x00000260                EXTI1_Handler
+                0x00000260                SVCall_Handler
+                0x00000260                EXTI3_Handler
+                0x00000260                Tamper_Handler
+                0x00000260                EXTI2_Handler
+                0x00000260                UART4_Handler
+                0x00000260                CAN2_RX1_Handler
+                0x00000260                EXTI9_5_Handler
+                0x00000260                TIM2_Handler
+                0x00000260                USART1_Handler
+                0x00000260                CAN2_SCE_Handler
+                0x00000260                TIM3_Handler
+                0x00000260                Default_Handler
+                0x00000260                TIM4_Handler
+                0x00000260                DMA_CH1_Handler
+                0x00000260                CAN2_TX_Handler
+                0x00000260                SPI2_Handler
+                0x00000260                EXTI0_Handler
+                0x00000260                CAN2_RX0_Handler
+                0x00000260                Usage_Fault_Handler
+                0x00000260                TIM1_UP_Handler
+                0x00000260                USART2_Handler
+                0x00000260                ETH_Handler
+                0x00000260                ETH_WKUP
+                0x00000260                SPI1_Handler
+                0x00000260                I2C2_EV_Handler
+                0x00000260                Flash_Handler
+                0x00000260                SPI3_Handler
+                0x00000260                DMA2_Channel3_Handler
+                0x00000260                RCC_Handler
+                0x00000260                PVD_Handler
+                0x00000260                UART5_Handler
+                0x00000260                DMA2_Channel2_Handler
+                0x00000260                TIM5_Handler
+                0x00000260                TIM7_Handler
+                0x00000260                Window_WD_Handler
+                0x00000260                CAN1_TX_Handler
+                0x00000260                DMA_CH3_Handler
+                0x00000260                TIM6_Handler
+                0x00000260                RTCAlarm_Handler
+                0x00000260                Debug_Mon_Handler
+                0x00000260                TIM1_TRG_COM_Handler
+                0x00000260                OTG_FS_WKUP_Handler
+                0x00000260                DMA_CH4_Handler
+ *(.rodata)
+                0x0000026c                _E_text = .
+
+.glue_7         0x0000026c        0x0
+ .glue_7        0x0000026c        0x0 linker stubs
+
+.glue_7t        0x0000026c        0x0
+ .glue_7t       0x0000026c        0x0 linker stubs
+
+.vfp11_veneer   0x0000026c        0x0
+ .vfp11_veneer  0x0000026c        0x0 linker stubs
+
+.v4_bx          0x0000026c        0x0
+ .v4_bx         0x0000026c        0x0 linker stubs
+
+.iplt           0x0000026c        0x0
+ .iplt          0x0000026c        0x0 startup.o
+
+.rel.dyn        0x0000026c        0x0
+ .rel.iplt      0x0000026c        0x0 startup.o
+
+.data           0x20000000        0x0 load address 0x0000026c
+                0x20000000                _S_DATA = .
+ *(.data)
+ .data          0x20000000        0x0 main.o
+ .data          0x20000000        0x0 startup.o
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _E_DATA = .
+
+.igot.plt       0x20000000        0x0 load address 0x0000026c
+ .igot.plt      0x20000000        0x0 startup.o
+
+.bss            0x20000000      0x400 load address 0x0000026c
+                0x20000000                _S_BSS = .
+ *(.bss)
+ .bss           0x20000000        0x0 main.o
+ .bss           0x20000000      0x400 startup.o
+                0x20000400                _E_BSS = .
+LOAD main.o
+LOAD startup.o
+OUTPUT(unit3_lab4_cortexM4.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x282
+ .debug_info    0x00000000       0xb3 main.o
+ .debug_info    0x000000b3      0x1cf startup.o
+
+.debug_abbrev   0x00000000      0x15d
+ .debug_abbrev  0x00000000       0x6f main.o
+ .debug_abbrev  0x0000006f       0xee startup.o
+
+.debug_loc      0x00000000       0xb4
+ .debug_loc     0x00000000       0x38 main.o
+ .debug_loc     0x00000038       0x7c startup.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 startup.o
+
+.debug_line     0x00000000      0x173
+ .debug_line    0x00000000       0xac main.o
+ .debug_line    0x000000ac       0xc7 startup.o
+
+.debug_str      0x00000000      0x1e0
+ .debug_str     0x00000000      0x14d main.o
+                                0x174 (size before relaxing)
+ .debug_str     0x0000014d       0x93 startup.o
+                                0x1f0 (size before relaxing)
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 main.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a startup.o
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e main.o
+ .ARM.attributes
+                0x0000002e       0x2e startup.o
+
+.debug_frame    0x00000000       0x7c
+ .debug_frame   0x00000000       0x2c main.o
+ .debug_frame   0x0000002c       0x50 startup.o
