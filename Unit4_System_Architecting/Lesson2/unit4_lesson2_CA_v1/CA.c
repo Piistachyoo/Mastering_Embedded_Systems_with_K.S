@@ -31,7 +31,7 @@ static int US_Get_Distance_random(int l, int r, int count){
 	/* This will generate random number in range l and r */
 	int i, rand_num;
 	for(i = 0; i < count; i++){
-		rand_num = (rand() % (r - 1 + 1)) + 1;
+		rand_num = (rand() % (r - l + 1)) + l;
 	}
 	return rand_num;
 }
