@@ -1,0 +1,56 @@
+#/*************************************************************************/#
+#/* Author        : Omar Yamany                                    		  */#
+#/* Project       : Pressure_Detection                                    */#
+#/* File          : MakeFile 	    			                          */#
+#/* Date          : Jun 1, 2023                                           */#
+#/* Version       : V1                                                    */#
+#/* GitHub        : https://github.com/Piistachyoo             		      */#
+#/*************************************************************************/#
+
+# Compiler Flags:
+CFLAGS = -c -mcpu=cortex-m3
+# Compiler:
+CC = arm-none-eabi-
+
+# Debug Flag
+DBG = -gdwarf-2
+
+# Includes
+INCs = -I . 
+
+# Source files wildcard
+SRC_FILES = $(wildcard *.c)
+
+# Source files object
+SRC_OBJ = $(SRC_FILES:.c=.o)
+
+# Assembly files wildcard
+ASS_FILES = $(wildcard *.s)
+
+# Assembly files object
+ASS_OBJ = $(ASS_FILES:.c = .o)
+
+# Linker Script File Name
+LS = linker_script.ld
+
+all: Pressure_Detection.bin
+
+%.o: %.c
+	$(CC)gcc $(CFLAGS) $(INCS) $< -o $@
+	@echo "========== Object files created! =========="
+
+Pressure_Detection.bin: Pressure_Detection.elf
+	$(CC)objcopy -O binary $< $@
+	@echo "========== bin files created! =========="
+
+Pressure_Detection.elf: $(SRC_OBJ) $(ASS_OBJ) $(LS)
+	$(CC)ld -T $(LS) $(SRC_OBJ) $(ASS_OBJ) -o $@ -Map=Map_File.map
+	@echo "========== elf files created! =========="
+
+clean:
+	@rm *.o *.elf *bin
+	@echo "========== Compiled files removed! =========="
+
+clean_obj:
+	@rm *.o
+	@echo "========== Object files removed! =========="
