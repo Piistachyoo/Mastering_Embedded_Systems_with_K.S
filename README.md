@@ -7,5 +7,5 @@
 - ##### Unit 1: Diploma Prerequisites ![](https://geps.dev/progress/100)
 - ##### Unit 2: C Programming ![](https://geps.dev/progress/100)
 - ##### Unit 3:Embedded C ![](https://geps.dev/progress/100)
-- ##### Unit4: System Architecting ![](https://geps.dev/progress/67)
-
+- ##### Unit4: System Architecting ![](https://geps.dev/progress/100)
+- ##### Unit5: First Term Projects ![](https://geps.dev/progress/50)
