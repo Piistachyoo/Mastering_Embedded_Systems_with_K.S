@@ -1,0 +1,6 @@
+11 Sherif Ashraf 3.5 1 2 3 4 5
+12 Keroles Karam 3.9 1 3 5 7 9
+13 Hamada Helal  2.5 21 22 23 24 25
+14 Hamada Hussein 2.1 12 13 14 15 16
+15 Keroles Khalil 3.0 9 7 4 6 1
+11 Omar Mohamed	2.5 1 3 5 7 9
