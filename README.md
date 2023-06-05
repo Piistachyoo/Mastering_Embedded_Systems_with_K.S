@@ -11,7 +11,7 @@
 - ##### Unit5: First Term Projects ![](https://geps.dev/progress/100)
 -----
 ### Second Term: ![](https://geps.dev/progress/0)
-- ##### Unit 6: Micro-Controller Architecture ![](https://geps.dev/progress/0)
+- ##### Unit 6: Micro-Controller Architecture ![](https://geps.dev/progress/75)
 - ##### Unit 7: MCU Essential Preipherals ![](https://geps.dev/progress/0)
 - ##### Unit 8: MCU Interfacing ![](https://geps.dev/progress/0)
 - ##### Unit 9: MCU Timers/ADC ![](https://geps.dev/progress/0)
