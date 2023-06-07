@@ -12,7 +12,7 @@
 -----
 ### Second Term: ![](https://geps.dev/progress/20)
 - ##### Unit 6: Micro-Controller Architecture ![](https://geps.dev/progress/100)
-- ##### Unit 7: MCU Essential Preipherals ![](https://geps.dev/progress/0)
+- ##### Unit 7: MCU Essential Preipherals ![](https://geps.dev/progress/25)
 - ##### Unit 8: MCU Interfacing ![](https://geps.dev/progress/0)
 - ##### Unit 9: MCU Timers/ADC ![](https://geps.dev/progress/0)
 - ##### Unit 10: SW Engineering ![](https://geps.dev/progress/0)
