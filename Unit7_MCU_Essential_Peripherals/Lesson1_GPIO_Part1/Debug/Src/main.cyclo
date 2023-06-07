@@ -1,4 +1,0 @@
-main.c:27:6:my_wait	3
-main.c:34:5:main	4
-main.c:55:6:clock_init	1
-main.c:60:6:GPIO_init	1
