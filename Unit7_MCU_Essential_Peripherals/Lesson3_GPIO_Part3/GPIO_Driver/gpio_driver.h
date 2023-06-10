@@ -84,7 +84,7 @@ typedef struct{
 
 /*
  * =============================================
- * APIs Supported by "Driver Name"
+ * APIs Supported by "GPIO"
  * =============================================
  */
 
@@ -97,6 +97,7 @@ typedef struct{
   * @retval 		- None
   * Note			- STM32F103C8 MCU has GPIO A,B,C,D,E Modules, but LQFP48 package has only
   * 				  GPIO A,B and part of C/D exported as external PINS from the MCU
+  * 				- It is mandatory to enable RCC clock for the corresponding GPIO PORT
   */
 void MCAL_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_PinConfig_t *PinConfig);
 
