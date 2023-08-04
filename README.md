@@ -16,4 +16,5 @@
 - ##### Unit 8: MCU Interfacing ![](https://geps.dev/progress/100)
 - ##### Unit 9: MCU Timers/ADC ![](https://geps.dev/progress/100)
 - ##### Unit 10: SW Engineering ![](https://geps.dev/progress/33)
+- ##### Unit 11: Second Term Project ![](https://geps.dev/progress/100)
 -----
