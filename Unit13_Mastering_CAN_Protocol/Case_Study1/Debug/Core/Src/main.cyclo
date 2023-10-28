@@ -1,0 +1,8 @@
+main.c:60:6:CAN_TX	4
+main.c:87:6:CAN_RX_Filter_Init	2
+main.c:107:6:CAN_RX	3
+main.c:129:5:main	2
+main.c:189:6:SystemClock_Config	3
+main.c:225:13:MX_CAN_Init	2
+main.c:262:13:MX_GPIO_Init	1
+main.c:283:6:Error_Handler	1
