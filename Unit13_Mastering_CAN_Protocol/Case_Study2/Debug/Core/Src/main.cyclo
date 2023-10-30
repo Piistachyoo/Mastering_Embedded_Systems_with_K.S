@@ -1,0 +1,11 @@
+main.c:62:6:CAN_TX	5
+main.c:91:6:CAN_RX_Filter_Init	2
+main.c:111:6:CAN_RX	4
+main.c:131:6:HAL_CAN_TxMailbox0CompleteCallback	1
+main.c:135:6:HAL_CAN_RxFifo0MsgPendingCallback	1
+main.c:139:6:HAL_CAN_ErrorCallback	1
+main.c:153:5:main	3
+main.c:215:6:SystemClock_Config	3
+main.c:252:13:MX_CAN_Init	2
+main.c:289:13:MX_GPIO_Init	1
+main.c:309:6:Error_Handler	1
