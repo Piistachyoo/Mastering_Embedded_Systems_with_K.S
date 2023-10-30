@@ -10,11 +10,18 @@
 - ##### Unit4: System Architecting ![](https://geps.dev/progress/100)
 - ##### Unit5: First Term Projects ![](https://geps.dev/progress/100)
 -----
-### Second Term: ![](https://geps.dev/progress/95)
+### Second Term: ![](https://geps.dev/progress/100)
 - ##### Unit 6: Micro-Controller Architecture ![](https://geps.dev/progress/100)
 - ##### Unit 7: MCU Essential Preipherals ![](https://geps.dev/progress/100)
 - ##### Unit 8: MCU Interfacing ![](https://geps.dev/progress/100)
 - ##### Unit 9: MCU Timers/ADC ![](https://geps.dev/progress/100)
-- ##### Unit 10: SW Engineering ![](https://geps.dev/progress/33)
+- ##### Unit 10: SW Engineering ![](https://geps.dev/progress/100)
 - ##### Unit 11: Second Term Project ![](https://geps.dev/progress/100)
+-----
+-----
+### Third Term: ![](https://geps.dev/progress/23)
+- ##### Unit 12: Advanced Topics ![](https://geps.dev/progress/67)
+- ##### Unit 13: Mastering CAN Protocol ![](https://geps.dev/progress/25)
+- ##### Unit 14: Mastering ARM Cortex ![](https://geps.dev/progress/0)
+- ##### Unit 15: Mastering RTOS ![](https://geps.dev/progress/0)
 -----
