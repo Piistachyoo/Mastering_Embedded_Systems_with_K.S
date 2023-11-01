@@ -1,0 +1,39 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+}
+
+variables
+{
+  msTimer periodic_timer;
+  const int timer_period = 100;
+  message Speed_VAL_message current_speed;
+  int speed = 0;
+}
+
+on start{
+  write("ECU2 ON");
+  setTimer(periodic_timer, timer_period);
+}
+
+on message Accelerator_CMD_message{
+  write("ECU2 : Received Accelerator Status from ECU1");
+  
+}
+
+on timer periodic_timer{
+  if(getSignal(Acceleration_ON) == 0){
+    if(speed != 0){
+    speed--;
+    }
+  }
+  else{
+    if(speed != 255){
+    speed++; 
+    }
+  }
+  current_speed.Speed.phys = speed;
+  output(current_speed);
+  setTimer(periodic_timer, timer_period);
+}

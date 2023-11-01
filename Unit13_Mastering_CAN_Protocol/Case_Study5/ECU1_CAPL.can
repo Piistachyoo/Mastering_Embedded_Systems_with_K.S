@@ -1,0 +1,27 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+}
+
+variables
+{
+  msTimer periodic_timer;
+  const int timer_period = 1000;
+  message Accelerator_CMD_message accelerator_status;
+}
+
+on start{
+  write("ECU1 ON");
+  setTimer(periodic_timer, timer_period);
+}
+
+on message Accelerator_CMD_message{
+  write("ECU1 : Received Speed from ECU2");
+}
+
+on timer periodic_timer{
+  accelerator_status.Acceleration_ON.phys = @sysvar::Accelerator_Status_Val;
+  output(accelerator_status);
+  setTimer(periodic_timer, timer_period);
+}
