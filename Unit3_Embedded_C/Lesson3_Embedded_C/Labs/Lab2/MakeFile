@@ -29,7 +29,7 @@ all: $(Project_Name).bin
 
 
 %.o: %.c
-	$(CC)gcc -c $(CFLAGS) $(INCS) $< -o $@
+<tab>$(CC)gcc -c $(CFLAGS) $(INCS) $< -o $@
 
 $(Project_Name).elf: $(OBJ) $(AsOBJ)
 	$(CC)ld.exe -T linker_script.ld $(OBJ) $(AsOBJ) -o $@ -Map=Map_File.map
@@ -47,4 +47,4 @@ clean:
 
 clean_obj:
 	rm *.o
-	@echo "======Cleaned Object Files======"
+	@echo "======Cleaned Object Files===
