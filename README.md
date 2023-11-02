@@ -19,9 +19,9 @@
 - ##### Unit 11: Second Term Project ![](https://geps.dev/progress/100)
 -----
 -----
-### Third Term: ![](https://geps.dev/progress/49)
+### Third Term: ![](https://geps.dev/progress/53)
 - ##### Unit 12: Advanced Topics ![](https://geps.dev/progress/67)
 - ##### Unit 13: Mastering CAN Protocol ![](https://geps.dev/progress/100)
-- ##### Unit 14: Mastering ARM Cortex ![](https://geps.dev/progress/29)
+- ##### Unit 14: Mastering ARM Cortex ![](https://geps.dev/progress/43)
 - ##### Unit 15: Mastering RTOS ![](https://geps.dev/progress/0)
 -----
