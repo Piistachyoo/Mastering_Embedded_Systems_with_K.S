@@ -39,7 +39,7 @@ int main(void)
 
 	Task3.Stack_Size = 1024;
 	Task3.pf_TaskEntry = Task_3;
-	Task3.Priority = 4;
+	Task3.Priority = 3;
 	Task3.AutoStart = FALSE;
 	STRING_copy((uint8*)"Task_3", (uint8*)&Task3.TaskName);
 
