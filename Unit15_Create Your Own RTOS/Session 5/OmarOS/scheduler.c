@@ -236,6 +236,12 @@ void OmarOS_Create_MainStack(void){
 	OS_Control.PSP_Task_Locator = OS_Control._E_MSP_OS - 8;
 }
 
+/**=============================================
+ * @Fn			- OmarOS_Init
+ * @brief 		- Initializes the OS control and buffers
+ * @retval 		- Returns noError if no error happened or an error code if an error occured
+ * Note			- Must be called before using any of the OS APIs
+ */
 OmarOS_errorTypes OmarOS_Init(void){
 	OmarOS_errorTypes retval = noError;
 	/* Update OS Mode -> OS_Suspended */
@@ -268,6 +274,13 @@ static void OmarOS_IdleTask(){
 	}
 }
 
+/**=============================================
+ * @Fn			- OmarOS_CreateTask
+ * @brief 		- Creates the task object in the OS and initializes the task's stack area
+ * @param [in] 	- newTask: Pointer to the task's configuration
+ * @retval 		- Returns noError if no error happened or an error code if an error occured
+ * Note			- Should only be called after calling "OmarOS_Init"
+ */
 OmarOS_errorTypes OmarOS_CreateTask(Task_ref* newTask){
 	OmarOS_errorTypes retval = noError;
 
@@ -349,6 +362,13 @@ static void OmarOS_Create_TaskStack(Task_ref* newTask){
 	}
 }
 
+/**=============================================
+ * @Fn			- OmarOS_ActivateTask
+ * @brief 		- Sends a task to the ready queue to be scheduled
+ * @param [in] 	- pTask: Pointer to the task's configuration
+ * @retval 		- None
+ * Note			- Should only be called after calling "OmarOS_CreateTask"
+ */
 void OmarOS_ActivateTask(Task_ref* pTask){
 	/* Change Task State */
 	pTask->TaskState = Waiting;
@@ -356,6 +376,13 @@ void OmarOS_ActivateTask(Task_ref* pTask){
 	OmarOS_Set_SVC(SVC_ActivateTask);
 }
 
+/**=============================================
+ * @Fn			- OmarOS_TerminateTask
+ * @brief 		- Sends a task to the suspended state
+ * @param [in] 	- pTask: Pointer to the task's configuration
+ * @retval 		- None
+ * Note			- Should only be called after calling "OmarOS_CreateTask"
+ */
 void OmarOS_TerminateTask(Task_ref* pTask){
 	/* Change Task State */
 	pTask->TaskState = Suspended;
@@ -363,6 +390,14 @@ void OmarOS_TerminateTask(Task_ref* pTask){
 	OmarOS_Set_SVC(SVC_TerminateTask);
 }
 
+/**=============================================
+ * @Fn			- OmarOS_TaskWait
+ * @brief 		- Sends a tasks to the waiting state for a specific amount of Ticks
+ * @param [in] 	- Ticks: The amount of ticks the task should be suspended before running again
+ * @param [in] 	- pTask: Pointer to the task's configuration
+ * @retval 		- Returns noError if no error happened or an error code if an error occured
+ * Note			- None
+ */
 void OmarOS_TaskWait(uint32 Ticks, Task_ref* pTask){
 	pTask->TimeWaiting.Task_Block_State = enabled;
 	pTask->TimeWaiting.Ticks_Count = Ticks;
@@ -372,6 +407,12 @@ void OmarOS_TaskWait(uint32 Ticks, Task_ref* pTask){
 	OmarOS_Set_SVC(SVC_TerminateTask);
 }
 
+/**=============================================
+ * @Fn			- OmarOS_StartOS
+ * @brief 		- Starts the OS scheduler to begin running tasks
+ * @retval 		- None
+ * Note			- Should only be called after calling "OmarOS_Init" and creating & activating tasks
+ */
 void OmarOS_StartOS(void){
 	OS_Control.OS_ModeID = OS_Running;
 	/* Set default "Current Task" */
@@ -407,6 +448,14 @@ void OmarOS_Update_TasksWaitingTime(void){
 	}
 }
 
+/**=============================================
+ * @Fn			- OmarOS_AcquireMutex
+ * @brief 		- Tries to acquire a mutex if available
+ * @param [in] 	- pMutex: Pointer to the Mutex to be locked
+ * @param [in] 	- pTask: Pointer to the task's configuration
+ * @retval 		- Returns noError if no error happened or an error code if an error occured
+ * Note			- A Mutex can be hold by 2 tasks only at the same time (as in a queue)
+ */
 OmarOS_errorTypes OmarOS_AcquireMutex(Mutex_ref* pMutex, Task_ref* pTask){
 	OmarOS_errorTypes retval = noError;
 
@@ -420,6 +469,9 @@ OmarOS_errorTypes OmarOS_AcquireMutex(Mutex_ref* pMutex, Task_ref* pTask){
 			pMutex->CurrentTUser->Priority = pMutex->PriorityCeiling.Ceiling_Priority;
 		}
 	}
+	else if(pMutex->CurrentTUser == pTask){
+		retval = MutexIsAlreadyAcquired;
+	}
 	else if(pMutex->NextTUser == NULL){
 		pMutex->NextTUser = pTask;
 		pMutex->NextTUser->TaskState = Suspended;
@@ -432,6 +484,13 @@ OmarOS_errorTypes OmarOS_AcquireMutex(Mutex_ref* pMutex, Task_ref* pTask){
 	return retval;
 }
 
+/**=============================================
+ * @Fn			- OmarOS_ReleaseMutex
+ * @brief 		- Releases a mutex and starts the next task that is in the queue (if found)
+ * @param [in] 	- pMutex: Pointer to the Mutex to be locked
+ * @retval 		- None
+ * Note			- A mutex can only be released by the same task that acquired it
+ */
 void OmarOS_ReleaseMutex(Mutex_ref* pMutex){
 	if((pMutex->CurrentTUser != NULL) && (pMutex->CurrentTUser == OS_Control.CurrentTask)){
 		if(pMutex->PriorityCeiling.state == PriorityCeiling_enabled){
